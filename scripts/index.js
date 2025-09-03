@@ -1,3 +1,8 @@
+const createElements = (arr) =>{
+    const elements= arr.map((el)=>`<span class="btn">${el}</span>`)
+    return elements.join(" ")
+}
+
 const loadLessons = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((res) => res.json())
@@ -43,6 +48,9 @@ detailBox.innerHTML=
   </div>
   <div class="my-8">
     <h3 class="font-bold mb-3 font-bangla">সমার্থক শব্দ</h3>
+    <div class="mt-4">
+    ${createElements(word.synonyms)}
+    </div>
   </div>
   <div>
     <button class="btn btn-primary">Complete Learning</button>
