@@ -19,6 +19,39 @@ const loadLevelWord = (id) => {
       displayLevelWord(data.data);
     });
 };
+const loadWordDetail=async (id)=>{
+const url = `https://openapi.programming-hero.com/api/word/${id}`
+const res = await fetch(url)
+const details = await res.json()
+displayWordDetail(details.data)
+}
+const displayWordDetail= (word)=>{
+const detailBox=document.getElementById("details-container")
+detailBox.innerHTML=
+`
+<div>
+  <div>
+    <h3 class="text-3xl font-bold">${word.word} (<i class="fa-solid fa-microphone"></i>:${word.pronunciation})</h3>
+  </div>
+  <div class="my-8">
+    <h3 class="font-bold mb-3">Meaning</h3>
+    <p>${word.meaning}</p>
+  </div>
+  <div>
+    <h3 class="font-bold mb-3">Example</h3>
+    <p>${word.sentence}</p>
+  </div>
+  <div class="my-8">
+    <h3 class="font-bold mb-3 font-bangla">সমার্থক শব্দ</h3>
+  </div>
+  <div>
+    <button class="btn btn-primary">Complete Learning</button>
+  </div>
+</div>
+
+`
+document.getElementById("my_modal_5").showModal()
+}
 const displayLevelWord = (words) => {
   const wordContainer = document.getElementById("word-container");
   wordContainer.innerHTML = "";
@@ -55,7 +88,7 @@ const displayLevelWord = (words) => {
           }</p>
         </div>
         <div class="flex justify-around mt-8">
-          <button onclick="my_modal_5.showModal()" class="btn btn-square bg-[#1A91FF1A]"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="loadWordDetail(${word.id})" class="btn btn-square bg-[#1A91FF1A]"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn btn-square bg-[#1A91FF1A]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
 
