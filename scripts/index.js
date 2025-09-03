@@ -3,12 +3,21 @@ const loadLessons = () => {
     .then((res) => res.json())
     .then((json) => displayLessons(json.data));
 };
+const clearActive = () =>{
+    const lessonBtn=document.querySelectorAll(".lesson-btn")
+    lessonBtn.forEach(btn =>btn.classList.remove("active"))
+}
 const loadLevelWord = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   console.log(url);
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayLevelWord(data.data));
+    .then((data) => {
+      const clickButton = document.getElementById(`lesson-btn-${id}`);
+      clearActive()
+      clickButton.classList.add("active")
+      displayLevelWord(data.data);
+    });
 };
 const displayLevelWord = (words) => {
   const wordContainer = document.getElementById("word-container");
@@ -37,12 +46,16 @@ const displayLevelWord = (words) => {
     );
     cardDiv.innerHTML = `
          <div>
-          <p class="text-3xl font-bold">${word.word ? word.word:"শব্দ পাওয়া যায়নি "}</p>
+          <p class="text-3xl font-bold">${
+            word.word ? word.word : "শব্দ পাওয়া যায়নি "
+          }</p>
           <p class="my-6 text-xl">Meaning /Pronounciation</p>
-          <p class="font-bangla text-2xl font-bold">${word.meaning ? word.meaning:"শব্দের অর্থ পাওয়া  যায়নি "}</p>
+          <p class="font-bangla text-2xl font-bold">${
+            word.meaning ? word.meaning : "শব্দের অর্থ পাওয়া  যায়নি "
+          }</p>
         </div>
         <div class="flex justify-around mt-8">
-          <button class="btn btn-square bg-[#1A91FF1A]"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="my_modal_5.showModal()" class="btn btn-square bg-[#1A91FF1A]"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn btn-square bg-[#1A91FF1A]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
 
@@ -56,7 +69,7 @@ const displayLessons = (lessons) => {
   for (let lesson of lessons) {
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-                <button onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary">
+                <button id="lesson-btn-${lesson.level_no}" onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary lesson-btn">
                 <i class="fa-solid fa-book-open"></i>Lesson - ${lesson.level_no}
                 </button>
     `;
