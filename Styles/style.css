@@ -9,3 +9,10 @@
     background-color:#422AD5 ;
     color:white
 }
+body {
+  scroll-behavior: smooth;
+}
+
+#learn, #faq {
+  scroll-margin-top: 100px;
+}

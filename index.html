@@ -33,9 +33,9 @@
   </head>
   <body>
     <!-- Navbar Design -->
-    <header>
-      <div class="navbar bg-base-100 shadow-sm">
-        <div class="navbar-start">
+    <header class="sticky top-0 z-50 bg-base-100 shadow-sm">
+      <div class="navbar flex justify-center lg:justify-between">
+        <div class="navbar-start lg:flex-1 flex justify-center lg:justify-start">
           <div class="dropdown">
             <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
               <svg
@@ -58,12 +58,12 @@
               class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a href="" class=""
+                <a href="#faq" class=""
                   ><i class="fa-solid fa-circle-question"></i>FAQ</a
                 >
               </li>
               <li>
-                <a href="" class=""
+                <a href="#learn" class=""
                   ><i class="fa-solid fa-book-open"></i>Learn</a
                 >
               </li>
@@ -83,12 +83,12 @@
         <div class="navbar-end hidden lg:flex">
           <ul class="menu menu-horizontal px-1 space-x-4">
             <li>
-              <a href="" class="btn btn-outline btn-primary"
+              <a href="#faq" class="btn btn-outline btn-primary"
                 ><i class="fa-solid fa-circle-question"></i>FAQ</a
               >
             </li>
             <li>
-              <a href="" class="btn btn-outline btn-primary"
+              <a href="#learn" class="btn btn-outline btn-primary"
                 ><i class="fa-solid fa-book-open"></i>Learn</a
               >
             </li>
@@ -121,18 +121,18 @@
         />
         <input
           type="text"
-          placeholder=".........."
+          placeholder="Enter Your Password"
           class="input input-md my-5"
         />
         <br />
-        <button class="btn btn-soft btn-primary">Get Started</button>
+        <button class="btn btn-primary">Get Started</button>
       </div>
       <div class="flex-1">
         <img src="./assets/hero-student.png" alt="" />
       </div>
     </section>
     <!-- Let's Learn Design -->
-    <section class="text-center">
+    <section class="text-center" id="learn">
       <h2 class="text-4xl font-bold my-6">
         <span class="text-sky-500">Let's</span> Learn Vocabularies
       </h2>
@@ -213,13 +213,13 @@
     </dialog>
     <!-- Lesson Design -->
     <!-- FAQ Design -->
-    <section class="w-11/12 mx-auto">
+    <section class="w-11/12 mx-auto" id="faq">
       <div class="flex justify-center">
         <h2 class="text-2xl md:text-4xl font-bold my-6">
           <span class="text-sky-500">Frequently</span> Asked Questions
         </h2>
         <div
-          id="lesson-container"
+          id="faq-container"
           class="flex justify-center gap-5 flex-wrap"
         ></div>
       </div>
